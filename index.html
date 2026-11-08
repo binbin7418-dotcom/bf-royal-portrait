@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Portrait — Your Photo, Crowned King</title>
+<meta name="description" content="Send one photo of a person. We repaint them as a king on a throne — crown, robe, oil painting. A funny, grand gift. $19.99, delivered in 48 hours.">
+<style>
+  :root{
+    --bg:#101410; --panel:#181d17; --gold:#c9a227; --gold-soft:#e6c65c; --cream:#f2ead2;
+    --dim:#a89e80; --line:#3a3f30;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--cream);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  header{display:flex;justify-content:space-between;align-items:center;padding:20px 0 8px}
+  .crest{font-size:22px;color:var(--gold)}
+  .lang-btn{background:transparent;color:var(--gold-soft);border:1px solid var(--gold);border-radius:4px;padding:6px 16px;font-family:inherit;font-size:14px;cursor:pointer;letter-spacing:.05em}
+  .lang-btn:hover{background:var(--gold);color:var(--bg)}
+  /* HERO — centered gallery piece */
+  .hero{text-align:center;padding:34px 0 10px}
+  .rule{display:flex;align-items:center;gap:14px;justify-content:center;color:var(--gold);margin-bottom:22px}
+  .rule::before,.rule::after{content:"";height:1px;width:90px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .kicker{letter-spacing:.34em;font-size:12.5px;text-transform:uppercase;color:var(--gold-soft)}
+  h1{font-size:clamp(36px,6vw,58px);font-weight:normal;line-height:1.12;margin:16px 0 14px}
+  h1 em{color:var(--gold-soft);font-style:italic}
+  .sub{font-size:18.5px;color:var(--dim);max-width:56ch;margin:0 auto}
+  .frame-wrap{margin:40px auto 14px;max-width:520px}
+  .frame{border:14px solid #6d5518;outline:3px solid var(--gold);outline-offset:5px;box-shadow:0 30px 70px rgba(0,0,0,.7);background:#000}
+  .frame img{width:100%;display:block}
+  .plaque{display:inline-block;border:1px solid var(--gold);color:var(--gold-soft);padding:6px 22px;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-top:18px;background:var(--panel)}
+  .caption{font-size:14.5px;color:var(--dim);font-style:italic;margin-top:14px}
+  /* PRICE + CTA block */
+  .commission{text-align:center;padding:30px 0 8px}
+  .price{font-size:44px;color:var(--gold-soft)}
+  .price small{font-size:15px;color:var(--dim)}
+  .cta{display:inline-block;margin-top:16px;background:var(--gold);color:#141205;text-decoration:none;font-size:19px;font-weight:bold;letter-spacing:.04em;padding:15px 40px;border-radius:4px;box-shadow:0 10px 30px rgba(201,162,39,.35);transition:transform .15s}
+  .cta:hover{transform:translateY(-2px)}
+  .micro{font-size:14px;color:var(--dim);margin-top:12px}
+  /* PROCESS — vertical, numbered with roman numerals */
+  .process{max-width:640px;margin:52px auto 0;text-align:left}
+  h2{font-size:28px;font-weight:normal;text-align:center;margin-bottom:6px}
+  h2 em{color:var(--gold-soft);font-style:italic}
+  .h2-rule{width:60px;height:1px;background:var(--gold);margin:12px auto 28px}
+  .step{display:flex;gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .numeral{font-size:26px;color:var(--gold);min-width:52px;text-align:center;font-style:italic}
+  .step h3{font-size:18.5px;margin-bottom:4px;color:var(--cream)}
+  .step p{font-size:15.5px;color:var(--dim)}
+  .step a{color:var(--gold-soft)}
+  /* TERMS — two plaque columns */
+  .terms{margin:52px 0 0}
+  .term-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .term{background:var(--panel);border:1px solid var(--line);padding:20px 22px}
+  .term h3{font-size:16.5px;color:var(--gold-soft);letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase}
+  .term p{font-size:15.5px;color:var(--dim)}
+  .final{text-align:center;padding:52px 0 58px}
+  .final p{font-size:21px;font-style:italic;color:var(--cream);margin-bottom:18px}
+  footer{border-top:1px solid var(--line);padding:20px 0 32px;text-align:center;font-size:13.5px;color:var(--dim)}
+  @media(max-width:640px){ .term-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="crest">♛</div>
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">中文</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="rule"><span class="kicker" data-i18n="kicker">A Commission in Oil</span></div>
+    <h1 data-i18n="h1">Every king was once <em>just a photo.</em></h1>
+    <p class="sub" data-i18n="sub">Send us one photo of a person — your dad, your boss, your best friend, yourself. We repaint them as a crowned king on a throne: robe, crown, full royal oil painting. Absurdly grand. Impossible not to laugh. A gift they will actually keep.</p>
+
+    <div class="frame-wrap">
+      <div class="frame"><img src="sample-royal.webp" alt="A man repainted as a king in a crown and royal robe, seated on a golden throne"></div>
+      <div class="plaque" data-i18n="plaque">His Majesty · Sample No. 1</div>
+      <p class="caption" data-i18n="caption">A real sample, made from one ordinary phone photo.</p>
+    </div>
+
+    <div class="commission">
+      <div class="price">$19.99 <small data-i18n="priceNote">one-time · per portrait</small></div><br>
+      <a class="cta" href="https://binbinster.gumroad.com/l/qdfzlk" data-i18n="cta">Buy on Gumroad</a>
+      <p class="micro" data-i18n="micro">High-resolution digital painting · Delivered within 48 hours · Print it, frame it, present it</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <h2 data-i18n="processTitle">The <em>commission</em></h2>
+    <div class="h2-rule"></div>
+    <div class="step">
+      <div class="numeral">I.</div>
+      <div>
+        <h3 data-i18n="s1t">Place your order on Gumroad</h3>
+        <p data-i18n="s1p">Check out for $19.99. Each portrait is commissioned one at a time — there is no instant machine behind a curtain.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="numeral">II.</div>
+      <div>
+        <h3 data-i18n="s2t">Send the photo by email</h3>
+        <p data-i18n="s2p">From the same email you used for your Gumroad order, send one clear photo of the person to <b>wbin7419@gmail.com</b>. Facing the camera works best — the crown needs a head to sit on.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="numeral">III.</div>
+      <div>
+        <h3 data-i18n="s3t">Receive the masterpiece in 48 hours</h3>
+        <p data-i18n="s3p">We reply with the finished high-resolution painting within 48 hours. Their face, unmistakably — the wardrobe, considerably upgraded.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section class="terms">
+    <h2 data-i18n="termsTitle">Terms of the <em>court</em></h2>
+    <div class="h2-rule"></div>
+    <div class="term-grid">
+      <div class="term">
+        <h3 data-i18n="t1t">Made by a person</h3>
+        <p data-i18n="t1p">Honestly: this is AI-assisted work, finished and checked by a human, one commission at a time. Not an instant filter — that's why the likeness holds, and why it takes up to 48 hours.</p>
+      </div>
+      <div class="term">
+        <h3 data-i18n="t2t">One free revision</h3>
+        <p data-i18n="t2p">Crown too small? Robe not red enough? Likeness off? One full redo is included, free — tell us what to fix.</p>
+      </div>
+      <div class="term">
+        <h3 data-i18n="t3t">What you receive</h3>
+        <p data-i18n="t3p">One high-resolution digital oil-style portrait. Print it big, frame it gold, and present it with a straight face.</p>
+      </div>
+      <div class="term">
+        <h3 data-i18n="t4t">Refund, plainly</h3>
+        <p data-i18n="t4p">If your portrait hasn't been delivered, your money comes back — just ask. Delivered work includes one free revision instead.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="final">
+    <p data-i18n="finalLine">"We are not amused," said nobody, ever, upon receiving one of these.</p>
+    <a class="cta" href="https://binbinster.gumroad.com/l/qdfzlk" data-i18n="cta">Buy on Gumroad</a>
+  </div>
+
+  <footer data-i18n="footer">Royal Portrait · Commissioned portraits, one at a time · Questions: wbin7419@gmail.com</footer>
+</div>
+
+<script>
+const T = {
+  zh: {
+    kicker:"一幅油画委托", h1:"每个国王，曾经都<em>只是一张照片。</em>",
+    sub:"把一个人的照片发给我们——你爸、你老板、你最好的朋友，或者你自己。我们把他重绘成戴皇冠、坐王座的国王：王袍、皇冠、完整的皇家油画。隆重得荒谬，不笑不可能。这是一份对方真的会留下来的礼物。",
+    plaque:"陛下本尊 · 样图一号", caption:"真实样图，由一张普通手机照片制作。",
+    priceNote:"一次性 · 每幅", cta:"在 Gumroad 购买", micro:"高清数字画作 · 48 小时内交付 · 打印、装框、赠予",
+    processTitle:"委托<em>流程</em>",
+    s1t:"在 Gumroad 下单", s1p:"19.99 美元结账。每幅肖像都逐单委托制作——幕后没有即时生成的机器。",
+    s2t:"把照片发邮件给我们", s2p:"用你在 Gumroad 下单的同一个邮箱，把一张清晰的人物照片发到 <b>wbin7419@gmail.com</b>。正脸最好——皇冠需要一颗头来戴。",
+    s3t:"48 小时内收到大作", s3p:"我们会在 48 小时内回信交付高清成品画。脸还是那张脸，毫无疑问——行头，则大幅升级。",
+    termsTitle:"宫廷<em>规矩</em>",
+    t1t:"真人制作", t1p:"说实话：这是 AI 辅助、由真人完成并检查的工作，逐单委托。不是即时滤镜——正因如此像得住，也正因如此需要最多 48 小时。",
+    t2t:"一次免费修改", t2p:"皇冠太小？袍子不够红？不够像？含一次整幅免费重做——告诉我们改哪里。",
+    t3t:"你会收到什么", t3p:"一幅高清数字油画风肖像。大尺寸打印、配上金框，然后一本正经地送出去。",
+    t4t:"退款，明说", t4p:"如果肖像还没交付，钱退给你——说一声就行。已交付的作品改为含一次免费修改。",
+    finalLine:"「朕不高兴」——收到这份礼物的人，从来没这么说过。",
+    footer:"国王肖像 · 逐单委托制作 · 有问题联系：wbin7419@gmail.com"
+  }
+};
+const enHTML = {};
+document.querySelectorAll('[data-i18n]').forEach(el=>{ enHTML[el.dataset.i18n]=el.innerHTML; });
+let lang='en';
+function toggleLang(){
+  lang = lang==='en' ? 'zh' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    el.innerHTML = lang==='zh' ? T.zh[k] : enHTML[k];
+  });
+  document.getElementById('langBtn').textContent = lang==='zh' ? 'EN' : '中文';
+  document.documentElement.lang = lang==='zh' ? 'zh' : 'en';
+}
+</script>
+</body>
+</html>
